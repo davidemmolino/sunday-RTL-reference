@@ -1,11 +1,11 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitForElementToBeRemoved } from "@testing-library/react";
 import SummaryForm from "../SummaryForm";
 import userEvent from '@testing-library/user-event';
 
 describe("Testing summary form component", () => {
   test("Initial conditions", () => {
     render(<SummaryForm />);
-    
+
     const checkbox = screen.getByRole("checkbox", {
       name: /terms and conditions/i,
     });
@@ -56,6 +56,9 @@ describe("Testing summary form component", () => {
 
     //popover disappears when we mouseout
     await user.unhover(popover);
+    // await waitForElementToBeRemoved(() => screen.queryByText(      
+    //   /no ice cream will actually be delivered/i
+    // ));
     const nullPopoverAgain = screen.queryByText(      
       /no ice cream will actually be delivered/i
     );

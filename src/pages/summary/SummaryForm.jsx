@@ -2,13 +2,7 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Popover from "react-bootstrap/Popover";
-import OverlayTrigger from 'react-bootstrap/Overlay';
-
-// const Example = () => (
-//   <OverlayTrigger trigger="click" placement="right" overlay={popover}>
-//     <Button variant="success">Click me to see</Button>
-//   </OverlayTrigger>
-// );
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 
 export default function SummaryForm() {
   const [tcChecked, setTcChecked] = useState(false);
