@@ -31,6 +31,32 @@ describe("Testing summary form component", () => {
     expect(confirmButton).toBeDisabled();
   });
 
+  test("popover responds to hover", () => {
+    const user = userEvent.setup();
+    render(<SummaryForm />);
+    //popover starts out hidden
+    const nullPopover = screen.queryByText(
+      /no ice cream will actually be delivered/i
+    );
+    expect(nullPopover).not.toBeInTheDocument();
+    //popover appears upon mouseover of checkbox label
+    const termsAndConditions = screen.getByText(
+      /terms and conditions/i
+    );
+    // const popover = screen.getBy
+    user.hover(termsAndConditions);
+    const popover = screen.getByText(
+      /no ice cream will actually be delivered/i
+    );
+    expect(popover).toBeInTheDocument();
+
+    //popover disappears when we mouseout
+    user.unhover(popover);
+    const nullPopoverAgain = screen.queryByText(      
+      /no ice cream will actually be delivered/i
+    );
+    expect(nullPopoverAgain).not.toBeInTheDocument();
+  })
   // do we even want to test things like dropdowns?
   //   test("Dropdown", () => {
   //     render(<SummaryForm />);
